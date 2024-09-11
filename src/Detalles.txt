@@ -1,0 +1,9 @@
+Que deberia tener esta aplicacion para una pagina de recargas de videojuegos.
+
+1. Un buen UX y UI sencillo, agradable a la vista
+
+2. Facil acceso a los diferentes servicios que ésta ofrece (Recargas de juegos y otras apps)
+
+3. Un sistema de registro de usuario 
+
+4. https://lucid.app/lucidchart/5cdd18ad-36b5-4b74-9a29-cd2165a02fd7/edit?beaconFlowId=10AFE49D33B3B4C9&invitationId=inv_af2297a0-e35f-42b6-9a95-6cac6d21d12e&page=0_0#
