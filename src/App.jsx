@@ -1,40 +1,34 @@
 import "./App.css";
-
-import { Nav } from "./components/nav/Nav";
 import { Dashboard } from "./components/dashboard/Dashboard";
-
-import {
-  Route,
-  BrowserRouter,
-  Routes,
-  redirect,
-  RouterProvider,
-  createBrowserRouter,
-  useLocation,
-} from "react-router-dom";
-import { CodProduct } from "./screens/codScreen/CodProduct";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Product } from "./screens/Product/Product";
 import { useEffect } from "react";
+import { ProductsScreen } from "./screens/ProductsScreen/ProductsScreen";
 
 export const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Dashboard />,
-    },
-    {
-      path: "/cod",
-      element: <CodProduct />,
-    },
-  ]);
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: <Dashboard />,
+		},
+		{
+			path: "/products",
+			element: <ProductsScreen />,
+		},
+		{
+			path: "/products/:productId",
+			element: <Product />,
+		},
+	]);
 
-  useEffect(() => {
-    // console.log(useLocati            on());
-  });
+	useEffect(() => {
+		// console.log(useLocati            on());
+	});
 
-  return (
-    <>
-      <RouterProvider router={router} />
-      {/* <BrowserRouter>
+	return (
+		<>
+			<RouterProvider router={router} />
+			{/* <BrowserRouter>
         <Test />
         <Routes>
           <Route path="/home" element={<Home />} />
@@ -43,6 +37,6 @@ export const App = () => {
           <Route path="/cod" element={<CodProduct />} />
         </Routes>
       </BrowserRouter> */}
-    </>
-  );
+		</>
+	);
 };
