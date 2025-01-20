@@ -1,7 +1,7 @@
 .section-principal {
 	margin-top: -75px;
 	width: 100%;
-	height: 60vh;
+	height: 80vh;
 	display: flex;
 }
 
@@ -12,8 +12,8 @@
 
 	background-image: linear-gradient(
 			180deg,
-			rgba(0, 0, 0, 0) 0%,
-			rgba(255, 255, 255, 0.3) 100%
+			rgba(0, 0, 0, 0) 25%,
+			rgba(0, 0, 0, 0.6) 100%
 		),
 		url("../../assets/background2.jpg");
 	background-size: cover;
@@ -32,17 +32,19 @@
 	text-align: center;
 	padding: 10px;
 	grid-area: 1 / 1;
-	align-self: flex-start;
-	justify-self: flex-start;
+	align-self: center;
+	justify-self: center;
+
+	text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
 }
 
 .principal-content p {
 	margin-top: -10px;
 	color: white;
-	font-family: "Open Sans", sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-size: 1.5rem;
 	text-align: center;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 .loadout-logo {
@@ -54,11 +56,13 @@
 }
 
 .loadout-logo h1 {
-	font-family: "open sans", sans-serif;
-	font-weight: 300;
+	font-family: "Oswald", sans-serif;
+	font-weight: 500;
 	font-size: 3rem;
 	color: white;
 	margin-right: 10px;
+	letter-spacing: 2px;
+	text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
 }
 .principal-icon {
 	font-size: 4rem;
@@ -78,10 +82,20 @@
 	font-size: 2rem;
 	font-weight: 600;
 	font-family: "Bebas Neue", sans-serif;
-	border-bottom: solid 6px var(--black);
-	text-decoration: none;
-	height: 2.4rem;
+	text-decoration: underline 4px var(--black);
 	color: var(--black);
+	transition: transform 0.5s ease;
+}
+
+.games-title:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.section-container1 {
+	background-color: rgb(235, 234, 234);
+	width: 100%;
+	padding: 1px 0;
 }
 .selection {
 	width: 100%;
@@ -142,12 +156,20 @@
 	transition: box-shadow 0.3s ease, background-color 0.2s ease,
 		transform 0.3s ease;
 	transform: translate(-13%, 0);
+	box-shadow: rgba(17, 12, 46, 0.05) 0px 5px 20px -1px;
 }
 
 .skeleton {
 	/* background-color: rgba(0, 0, 0, 0.1); */
 	border-radius: 5px;
-	background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0) 0 0/ 100vh 100% fixed;
+	background: linear-gradient(
+			90deg,
+			rgba(220, 220, 220, 1) 0%,
+			rgba(230, 230, 230, 1) 25%,
+			rgba(230, 230, 230, 1) 75%,
+			rgba(220, 220, 220, 1) 100%
+		)
+		0 0/ 100vh 100% fixed;
 	animation: bgslide 3s infinite linear;
 }
 
@@ -161,4 +183,5 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	box-shadow: rgba(17, 12, 46, 0.05) 0px 5px 20px -1px;
 }

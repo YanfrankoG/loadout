@@ -1,6 +1,8 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import "./Dashboard.css";
 // import games from "../../utils/games";
 import { useEffect, useRef, useState } from "react";
+import { getAllGames } from "../../utils/games.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { SelectionCard } from "../selection/SelectionCard";
@@ -11,23 +13,23 @@ const ITEM_WIDTH = 540;
 const loop = [1, 2, 3, 4, 5, 6];
 
 export const Dashboard = () => {
-	console.log(loop);
 	const [games, setGames] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 
+	const fetchData = async () => {
+		try {
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+			getAllGames().then((response) => {
+				setGames(response);
+			});
+			setIsLoading(false);
+		} catch (error) {
+			console.log(error);
+			setIsLoading(false);
+		}
+	};
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				await new Promise((resolve) => setTimeout(resolve, 2000));
-				const response = await import("../../utils/games.js");
-				setGames(response.default);
-				setIsLoading(false);
-				// throw new Error("No se encontraron datos");
-			} catch (error) {
-				console.log(error);
-				setIsLoading(false);
-			}
-		};
 		fetchData();
 	}, []);
 
@@ -58,7 +60,7 @@ export const Dashboard = () => {
               icon={faBox}
               className="principal-icon"
             ></FontAwesomeIcon> */}
-						<h1>Loadout</h1>
+						<h1>LOADOUT</h1>
 					</div>
 				</div>
 			</section>
@@ -69,30 +71,32 @@ export const Dashboard = () => {
 				</Link>
 				<div className="selection " ref={selectionRef}>
 					{!isLoading && games
-						? Object.entries(games?.mobileGames).map((key) => {
-								return (
-									<SelectionCard
-										key={key}
-										gameTitle={key[1].title}
-										gameImg={key[1].img}
-										gamePlatforms={key[1].platform}
-										gameId={key[1].id}
-									/>
-								);
-						  })
+						? games
+								.filter((game) => !game.platform.includes("PC"))
+								.map((game) => {
+									return (
+										<SelectionCard
+											key={game.id}
+											gameTitle={game.title}
+											gameImg={game.img}
+											gamePlatforms={game.platform}
+											gameId={game.id}
+										/>
+									);
+								})
 						: loop.map((key) => (
 								<div
 									key={key}
 									className="skeleton skeleton-card"
 									style={{
-										height: "250px",
+										height: "260px",
 										overflow: "hidden",
 									}}
 								>
 									<div
 										style={{
 											width: "100%",
-											height: "70px",
+											height: "60px",
 											backgroundColor: "white",
 											display: "flex",
 											justifyContent: "center",
@@ -101,8 +105,8 @@ export const Dashboard = () => {
 										<div
 											className={"skeleton"}
 											style={{
-												width: "80%",
-												height: "50%",
+												width: "70%",
+												height: "60%",
 												alignSelf: "center",
 											}}
 										></div>
@@ -122,24 +126,24 @@ export const Dashboard = () => {
 					</div>
 				)}
 			</section>
-			<section
-				style={{ backgroundColor: "white", width: "100%", padding: "1px 0" }}
-			>
+			<section className="section-container1">
 				<section className="pc-games section-games">
 					<h1 className="games-title">JUEGOS MULTIPLATAFORMA</h1>
 					<div className="selection">
 						{!isLoading && games
-							? Object.entries(games?.desktopGames).map((key) => {
-									return (
-										<SelectionCard
-											key={key}
-											gameTitle={key[1].title}
-											gameImg={key[1].img}
-											gamePlatforms={key[1].platform}
-											gameId={key[1].id}
-										/>
-									);
-							  })
+							? games
+									.filter((game) => game.platform.includes("PC"))
+									.map((game) => {
+										return (
+											<SelectionCard
+												key={game.id}
+												gameTitle={game.title}
+												gameImg={game.img}
+												gamePlatforms={game.platform}
+												gameId={game.id}
+											/>
+										);
+									})
 							: loop.map((key) => (
 									<div
 										key={key}
@@ -152,7 +156,7 @@ export const Dashboard = () => {
 										<div
 											style={{
 												width: "100%",
-												height: "70px",
+												height: "50px",
 												backgroundColor: "white",
 												display: "flex",
 												justifyContent: "center",
@@ -161,8 +165,8 @@ export const Dashboard = () => {
 											<div
 												className={"skeleton"}
 												style={{
-													width: "80%",
-													height: "50%",
+													width: "70%",
+													height: "60%",
 													alignSelf: "center",
 												}}
 											></div>

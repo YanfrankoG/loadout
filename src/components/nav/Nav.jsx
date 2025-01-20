@@ -16,7 +16,7 @@ export const Nav = () => {
 				<Link to={"/"} className="icon" onClick={scrollTop}>
 					<FontAwesomeIcon icon={faBox} className="logo" />
 				</Link>
-				<Link href="/about" className="nav-item">
+				<Link to={"/about"} className="nav-item">
 					<p className="nav-link">Sobre nosotros</p>
 				</Link>
 
@@ -32,7 +32,9 @@ export const Nav = () => {
 					/>
 					<FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
 				</label>
-				<FontAwesomeIcon icon={faUser} className="icon" size="lg" />
+				<Link to={"/login"} className="icon">
+					<FontAwesomeIcon icon={faUser} size="lg" />
+				</Link>
 			</div>
 		</div>
 	);
